@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFrameworklessApp", "TestFrameworklessApp\TestFrameworklessApp.csproj", "{ED04C5C5-1818-4B12-9DD1-4C25A31EDDEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworklessApp", "FrameworklessApp\FrameworklessApp.csproj", "{D07CB25E-8ED2-45CC-8135-3417E541DD08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED04C5C5-1818-4B12-9DD1-4C25A31EDDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED04C5C5-1818-4B12-9DD1-4C25A31EDDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED04C5C5-1818-4B12-9DD1-4C25A31EDDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED04C5C5-1818-4B12-9DD1-4C25A31EDDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D07CB25E-8ED2-45CC-8135-3417E541DD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D07CB25E-8ED2-45CC-8135-3417E541DD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D07CB25E-8ED2-45CC-8135-3417E541DD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D07CB25E-8ED2-45CC-8135-3417E541DD08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
