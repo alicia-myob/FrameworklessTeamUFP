@@ -3,8 +3,8 @@ namespace FrameworklessApp
     public class User
     {
         private string _name;
-        private int _id;
-        public User(string name, int id)
+        private string _id;
+        public User(string name, string id)
         {
             _name = name;
             _id = id;
@@ -16,7 +16,7 @@ namespace FrameworklessApp
             set => _name = value;
         }
 
-        public int Id
+        public string Id
         {
             get => _id;
             set => _id = value;

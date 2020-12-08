@@ -12,9 +12,26 @@ namespace TestFrameworklessApp.UnitTests
         {
             var getHandler = new GetHandler();
             var userList = new List<User>();
-            userList.Add(new User("Bob", 1));
+            userList.Add(new User("Bob", "1"));
+
             var actual = getHandler.getAllUsers();
-            Assert.Equal("Bob", actual);
+
+            bool result = true;
+
+            if (userList.Count == actual.Count)
+            {
+                foreach (var user in userList)
+                {
+                    if (user.Name != "Bob") result = false;
+                    if (user.Id != "1") result = false;
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            
+            Assert.True(result);
         }
     }
     
