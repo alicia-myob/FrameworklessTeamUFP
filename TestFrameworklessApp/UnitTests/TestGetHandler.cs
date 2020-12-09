@@ -11,8 +11,7 @@ namespace TestFrameworklessApp.UnitTests
 {
     public class TestGetHandler
     {
-        string filepath = "../../../../FrameworklessApp/database.json";
-        
+
         [Fact]
         public void Check_If_Database_Is_Empty_Return_Error()
         {
@@ -94,7 +93,6 @@ namespace TestFrameworklessApp.UnitTests
             Assert.Equal("User does not exist", exception.Message);
         }
 
-        
     }
     
 }
