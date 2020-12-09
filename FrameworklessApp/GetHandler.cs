@@ -20,20 +20,10 @@ namespace FrameworklessApp
         public List<User> GetAllUsers()
         {
             // TODO: extract this later
-            
-            var streamReader = new StreamReader(_filepath);
 
-            var json = streamReader.ReadToEnd();
-
-            List<User> import = JsonConvert.DeserializeObject<List<User>>(json);
-
-            if (import.Count == 0)
-            {
-                throw new ArgumentException("Database is empty");
-            }
-            
-            return import;
+            return DataController.GetData(_filepath);
         }
+        
 
 
         public User GetUserById(string Id)
