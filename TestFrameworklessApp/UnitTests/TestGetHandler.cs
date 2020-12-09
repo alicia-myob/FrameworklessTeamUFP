@@ -48,26 +48,35 @@ namespace TestFrameworklessApp.UnitTests
             Assert.True(result);
         }
         
-        // [Fact]
-        // public void Get_All_Users_In_Database_Containing_Multiple_Users()
-        // {
-        //     var getHandler = new GetHandler();
-        //     var userList = new List<User>();
-        //     userList.Add(new User("Bob", "1"));
-        //     userList.Add(new User("Sally", "2"));
-        //
-        //     var actual = getHandler.getAllUsers();
-        //     bool result = true;
-        //     
-        //     for (int i = 0; i < actual.Count; i++)
-        //     {
-        //         if (actual[i].Name != userList[i].Name || actual[i].Id != userList[i].Id)
-        //         {
-        //             result = false;
-        //         }
-        //     }
-        //     Assert.True(result);
-        // }
+        [Fact]
+        public void Get_All_Users_In_Database_Containing_Multiple_Users()
+        {
+            var getHandler = new GetHandler();
+            var userList = new List<User>();
+            userList.Add(new User("Bob", "1"));
+            userList.Add(new User("Sally", "2"));
+            userList.Add(new User("Sam", "3"));
+            
+            var actual = getHandler.getAllUsers("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
+            bool result = true;
+
+            if (actual.Count == userList.Count)
+            {
+                for (int i = 0; i < actual.Count; i++)
+                {
+                    if (actual[i].Name != userList[i].Name || actual[i].Id != userList[i].Id)
+                    {
+                        result = false;
+                    }
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            
+            Assert.True(result);
+        }
 
 
 
