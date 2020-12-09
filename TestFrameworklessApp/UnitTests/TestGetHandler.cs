@@ -16,8 +16,8 @@ namespace TestFrameworklessApp.UnitTests
         [Fact]
         public void Check_If_Database_Is_Empty_Return_Error()
         {
-            var getHandler = new GetHandler();
-            var exception = Assert.Throws<ArgumentException>(() => getHandler.getAllUsers("../../../../TestFrameworklessApp/UnitTests/EmptyDatabaseTest.json"));
+            var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/EmptyDatabaseTest.json");
+            var exception = Assert.Throws<ArgumentException>(() => getHandler.getAllUsers());
             Assert.Equal("Database is empty", exception.Message);
         }
         
@@ -27,9 +27,9 @@ namespace TestFrameworklessApp.UnitTests
             var userList = new List<User>();
             userList.Add(new User("Bob", "1"));
 
-            var getHandler = new GetHandler();
+            var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/SingleUserDatabaseTest.json");
             
-            var actual = getHandler.getAllUsers("../../../../TestFrameworklessApp/UnitTests/SingleUserDatabaseTest.json");
+            var actual = getHandler.getAllUsers();
         
             bool result = true;
         
@@ -51,13 +51,13 @@ namespace TestFrameworklessApp.UnitTests
         [Fact]
         public void Get_All_Users_In_Database_Containing_Multiple_Users()
         {
-            var getHandler = new GetHandler();
+            var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
             var userList = new List<User>();
             userList.Add(new User("Bob", "1"));
             userList.Add(new User("Sally", "2"));
             userList.Add(new User("Sam", "3"));
             
-            var actual = getHandler.getAllUsers("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
+            var actual = getHandler.getAllUsers();
             bool result = true;
 
             if (actual.Count == userList.Count)
@@ -78,19 +78,23 @@ namespace TestFrameworklessApp.UnitTests
             Assert.True(result);
         }
 
-
-
-        public void Create_Temporary_Database(List<User> database)
+        [Fact]
+        public void Search_For_User_By_Id()
         {
-            
-            var users = database.Select(user =>
-                new JObject(new JProperty("name", user.Name), new JProperty("id", user.Id)));
-            var newDatabase = new JArray(users);
-            using var streamWriter = File.CreateText(filepath);
-
-            streamWriter.WriteLine(newDatabase);
-         //   streamWriter.Close();
+            var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
+            User actualUser = getHandler.getUserById("3");
+            Assert.Equal("Sam", actualUser.Name);
         }
+
+        [Fact]
+        public void Search_For_User_By_Id_No_User_Existent()
+        {
+            var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
+            var exception = Assert.Throws<ArgumentException>(() => getHandler.getUserById("4"));
+            Assert.Equal("User does not exist", exception.Message);
+        }
+
+        
     }
     
 }
