@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace FrameworklessApp
 {
@@ -19,6 +21,11 @@ namespace FrameworklessApp
             var json = streamReader.ReadToEnd();
 
             List<User> import = JsonConvert.DeserializeObject<List<User>>(json);
+
+            if (import.Count == 0)
+            {
+                throw new ArgumentException("Database is empty");
+            }
             
             return import;
         }
