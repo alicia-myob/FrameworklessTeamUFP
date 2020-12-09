@@ -21,6 +21,8 @@ namespace FrameworklessApp
             {
                 throw new ArgumentException("Database is empty");
             }
+            
+            streamReader.Close();
 
             return import;
         }
@@ -32,6 +34,7 @@ namespace FrameworklessApp
             var newJson = new JArray(newUsers);
             using var streamWriter = File.CreateText(filePath);
             streamWriter.WriteLine(newJson);
+            streamWriter.Close();
         }
     }
 }
