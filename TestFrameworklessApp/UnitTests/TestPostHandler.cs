@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using FrameworklessApp;
@@ -30,6 +31,15 @@ namespace TestFrameworklessApp.UnitTests
             }
             
             Assert.True(result);
+        }
+
+        [Fact]
+        public void Add_Duplicate_User_Test()
+        {
+            var postHandler = new PostHandler("../../../../TestFrameworklessApp/UnitTests/PostHandlerDatabaseTest.json");
+
+            var exception = Assert.Throws<ArgumentException>(() => postHandler.AddUser("Bob"));
+            Assert.Equal("User already exists", exception.Message);
         }
     }
 }
