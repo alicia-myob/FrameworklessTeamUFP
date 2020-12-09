@@ -11,11 +11,10 @@ namespace FrameworklessApp
     {
 
 
-        public List<User> getAllUsers()
+        public List<User> getAllUsers(string filepath)
         {
             // TODO: extract this later
             
-            string filepath = "../../../../FrameworklessApp/database.json";
             var streamReader = new StreamReader(filepath);
 
             var json = streamReader.ReadToEnd();

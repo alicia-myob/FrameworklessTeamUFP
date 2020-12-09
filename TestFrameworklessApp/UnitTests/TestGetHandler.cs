@@ -12,13 +12,24 @@ namespace TestFrameworklessApp.UnitTests
     public class TestGetHandler
     {
         string filepath = "../../../../FrameworklessApp/database.json";
+        
+        [Fact]
+        public void Check_If_Database_Is_Empty_Return_Error()
+        {
+            var getHandler = new GetHandler();
+            var exception = Assert.Throws<ArgumentException>(() => getHandler.getAllUsers("../../../../TestFrameworklessApp/UnitTests/EmptyDatabaseTest.json"));
+            Assert.Equal("Database is empty", exception.Message);
+        }
+        
         // [Fact]
         // public void Get_All_Users_In_Database_Containing_One_User()
         // {
-        //     var getHandler = new GetHandler();
         //     var userList = new List<User>();
         //     userList.Add(new User("Bob", "1"));
-        //
+        //     Create_Temporary_Database(userList);
+        //     
+        //     var getHandler = new GetHandler();
+        //     
         //     var actual = getHandler.getAllUsers();
         //
         //     bool result = true;
@@ -37,7 +48,7 @@ namespace TestFrameworklessApp.UnitTests
         //     
         //     Assert.True(result);
         // }
-
+        
         // [Fact]
         // public void Get_All_Users_In_Database_Containing_Multiple_Users()
         // {
@@ -59,15 +70,7 @@ namespace TestFrameworklessApp.UnitTests
         //     Assert.True(result);
         // }
 
-        [Fact]
-        public void Check_If_Database_Is_Empty_Return_Error()
-        {
-            Create_Temporary_Database(new List<User>());
-            var getHandler = new GetHandler();
-            var exception = Assert.Throws<ArgumentException>(() => getHandler.getAllUsers());
-            Assert.Equal("Database is empty", exception.Message);
 
-        }
 
         public void Create_Temporary_Database(List<User> database)
         {
@@ -76,8 +79,9 @@ namespace TestFrameworklessApp.UnitTests
                 new JObject(new JProperty("name", user.Name), new JProperty("id", user.Id)));
             var newDatabase = new JArray(users);
             using var streamWriter = File.CreateText(filepath);
-            streamWriter.WriteLine(newDatabase);
 
+            streamWriter.WriteLine(newDatabase);
+         //   streamWriter.Close();
         }
     }
     
