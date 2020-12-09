@@ -16,7 +16,7 @@ namespace TestFrameworklessApp.UnitTests
         public void Check_If_Database_Is_Empty_Return_Error()
         {
             var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/EmptyDatabaseTest.json");
-            var exception = Assert.Throws<ArgumentException>(() => getHandler.getAllUsers());
+            var exception = Assert.Throws<ArgumentException>(() => getHandler.GetAllUsers());
             Assert.Equal("Database is empty", exception.Message);
         }
         
@@ -28,7 +28,7 @@ namespace TestFrameworklessApp.UnitTests
 
             var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/SingleUserDatabaseTest.json");
             
-            var actual = getHandler.getAllUsers();
+            var actual = getHandler.GetAllUsers();
         
             bool result = true;
         
@@ -56,7 +56,7 @@ namespace TestFrameworklessApp.UnitTests
             userList.Add(new User("Sally", "2"));
             userList.Add(new User("Sam", "3"));
             
-            var actual = getHandler.getAllUsers();
+            var actual = getHandler.GetAllUsers();
             bool result = true;
 
             if (actual.Count == userList.Count)
@@ -81,7 +81,7 @@ namespace TestFrameworklessApp.UnitTests
         public void Search_For_User_By_Id()
         {
             var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
-            User actualUser = getHandler.getUserById("3");
+            User actualUser = getHandler.GetUserById("3");
             Assert.Equal("Sam", actualUser.Name);
         }
 
@@ -89,7 +89,7 @@ namespace TestFrameworklessApp.UnitTests
         public void Search_For_User_By_Id_No_User_Existent()
         {
             var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
-            var exception = Assert.Throws<ArgumentException>(() => getHandler.getUserById("4"));
+            var exception = Assert.Throws<ArgumentException>(() => getHandler.GetUserById("4"));
             Assert.Equal("User does not exist", exception.Message);
         }
 

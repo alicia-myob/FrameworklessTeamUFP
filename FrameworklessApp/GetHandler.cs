@@ -17,7 +17,7 @@ namespace FrameworklessApp
         }
 
 
-        public List<User> getAllUsers()
+        public List<User> GetAllUsers()
         {
             // TODO: extract this later
             
@@ -36,9 +36,9 @@ namespace FrameworklessApp
         }
 
 
-        public User getUserById(string Id)
+        public User GetUserById(string Id)
         {
-            List<User> allUsers = getAllUsers();
+            List<User> allUsers = GetAllUsers();
             foreach (var user in allUsers)
             {
                 if (user.Id == Id)
