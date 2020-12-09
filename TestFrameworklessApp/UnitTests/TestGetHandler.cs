@@ -21,33 +21,32 @@ namespace TestFrameworklessApp.UnitTests
             Assert.Equal("Database is empty", exception.Message);
         }
         
-        // [Fact]
-        // public void Get_All_Users_In_Database_Containing_One_User()
-        // {
-        //     var userList = new List<User>();
-        //     userList.Add(new User("Bob", "1"));
-        //     Create_Temporary_Database(userList);
-        //     
-        //     var getHandler = new GetHandler();
-        //     
-        //     var actual = getHandler.getAllUsers();
-        //
-        //     bool result = true;
-        //
-        //     if (userList.Count == actual.Count)
-        //     {
-        //         foreach (var user in actual)
-        //         {
-        //             if (user.Name != "Bob" || user.Id != "1") result = false;
-        //         }
-        //     }
-        //     else
-        //     {
-        //         result = false;
-        //     }
-        //     
-        //     Assert.True(result);
-        // }
+        [Fact]
+        public void Get_All_Users_In_Database_Containing_One_User()
+        {
+            var userList = new List<User>();
+            userList.Add(new User("Bob", "1"));
+
+            var getHandler = new GetHandler();
+            
+            var actual = getHandler.getAllUsers("../../../../TestFrameworklessApp/UnitTests/SingleUserDatabaseTest.json");
+        
+            bool result = true;
+        
+            if (userList.Count == actual.Count)
+            {
+                foreach (var user in actual)
+                {
+                    if (user.Name != "Bob" || user.Id != "1") result = false;
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            
+            Assert.True(result);
+        }
         
         // [Fact]
         // public void Get_All_Users_In_Database_Containing_Multiple_Users()
