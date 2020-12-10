@@ -13,6 +13,10 @@ namespace FrameworklessApp
 
         public bool DeleteUser(string id)
         {
+            if (id.Equals("1"))
+            {
+                throw new ArgumentException("Can not delete Bob"); 
+            }
             var list = DataController.GetData(_filepath);
 
             foreach (var user in list)
