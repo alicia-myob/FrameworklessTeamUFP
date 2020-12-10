@@ -28,10 +28,13 @@ namespace FrameworklessApp
                 // case("DELETE"):
                 //     handler = new DeleteHandler(_filePath);
                 //     break;
-
+                
+                default:
+                    throw new ArgumentException("Method not valid");
             }
             
-            throw new ArgumentException("Method not valid");
+            return new Response();
+
         }
     }
 }
