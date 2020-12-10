@@ -2,7 +2,7 @@ using System;
 
 namespace FrameworklessApp
 {
-    public class PutHandler
+    public class PutHandler : IHandler
     {
         private string _filepath;
 
