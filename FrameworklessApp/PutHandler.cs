@@ -1,3 +1,5 @@
+using System;
+
 namespace FrameworklessApp
 {
     public class PutHandler
@@ -10,6 +12,10 @@ namespace FrameworklessApp
 
             foreach (var user in list)
             {
+                if (user.Name.Equals(newName))
+                {
+                    throw new ArgumentException("User already exists");
+                }
                 if (user.Id.Equals(id))
                 {
                     user.Name = newName;
@@ -18,8 +24,8 @@ namespace FrameworklessApp
                 }
                 
             }
-
-            return false;
+            
+            throw new ArgumentException("User doesn't exist");
         }
 
         public PutHandler(string filepath)
