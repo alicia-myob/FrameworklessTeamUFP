@@ -2,7 +2,7 @@ using System;
 
 namespace FrameworklessApp
 {
-    public class DeleteHandler
+    public class DeleteHandler : IHandler
     {
         private string _filepath;
 
