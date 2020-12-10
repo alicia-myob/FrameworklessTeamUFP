@@ -1,3 +1,5 @@
+using System;
+
 namespace FrameworklessApp
 {
     public class PutHandler
@@ -18,8 +20,8 @@ namespace FrameworklessApp
                 }
                 
             }
-
-            return false;
+            
+            throw new ArgumentException("User doesn't exist");
         }
 
         public PutHandler(string filepath)
