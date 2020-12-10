@@ -12,6 +12,10 @@ namespace FrameworklessApp
 
             foreach (var user in list)
             {
+                if (user.Name.Equals(newName))
+                {
+                    throw new ArgumentException("User already exists");
+                }
                 if (user.Id.Equals(id))
                 {
                     user.Name = newName;
