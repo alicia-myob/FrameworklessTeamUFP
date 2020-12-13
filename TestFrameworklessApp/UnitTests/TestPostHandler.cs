@@ -14,19 +14,15 @@ namespace TestFrameworklessApp.UnitTests
             var postHandler = new PostHandler("../../../../TestFrameworklessApp/UnitTests/PostHandlerDatabaseTest.json");
             postHandler.AddUser("Tracy");
 
-            var userList = new List<User>();
-            
-            userList.Add(new User("Bob", "1"));
-            userList.Add(new User("Sally", "2"));
-            userList.Add(new User("Sam", "3"));
-            userList.Add(new User("Tracy", "4"));
-            
             bool result = false;
-            foreach (var user in userList)
+            var actualList = DataController.GetData("../../../../TestFrameworklessApp/UnitTests/PostHandlerDatabaseTest.json");
+            foreach (var user in actualList)
             {
                 if (user.Name.Equals("Tracy"))
                 {
                     result = true;
+                    var deleteHandler = new DeleteHandler("../../../../TestFrameworklessApp/UnitTests/PostHandlerDatabaseTest.json");
+                    deleteHandler.DeleteUser("4");
                 }
             }
             

@@ -13,6 +13,7 @@ namespace TestFrameworklessApp.UnitTests
             var putHandler = new PutHandler("../../../../TestFrameworklessApp/UnitTests/PutHandlerDatabaseTest.json");
             
             var result = putHandler.UpdateUserName("2", "Alicia");
+            putHandler.UpdateUserName("2", "Sally");
 
             Assert.True(result);
         }
