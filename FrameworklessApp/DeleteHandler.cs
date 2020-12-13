@@ -31,5 +31,10 @@ namespace FrameworklessApp
             }
             throw new ArgumentException("User does not exist");
         }
+        
+        public MethodType HandleRequest(Request request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
