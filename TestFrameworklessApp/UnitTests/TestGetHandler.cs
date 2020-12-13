@@ -81,8 +81,8 @@ namespace TestFrameworklessApp.UnitTests
         public void Search_For_User_By_Id()
         {
             var getHandler = new GetHandler("../../../../TestFrameworklessApp/UnitTests/MultipleUserDatabase.json");
-            User actualUser = getHandler.GetUserById("3");
-            Assert.Equal("Sam", actualUser.Name);
+            List<User> actualUser = getHandler.GetUserById("3");
+            Assert.Equal("Sam", actualUser[0].Name);
         }
 
         [Fact]

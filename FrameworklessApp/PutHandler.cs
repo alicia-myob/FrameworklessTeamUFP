@@ -33,7 +33,7 @@ namespace FrameworklessApp
             _filepath = filepath;
         }
 
-        public MethodType HandleRequest(Request request)
+        public Message HandleRequest(Request request)
         {
             throw new NotImplementedException();
         }

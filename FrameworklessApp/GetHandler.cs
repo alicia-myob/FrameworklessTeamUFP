@@ -27,24 +27,38 @@ namespace FrameworklessApp
         }
         
 
-
-        public User GetUserById(string Id)
+        public List<User> GetUserById(string Id)
         {
             List<User> allUsers = GetAllUsers();
+            var singleUser = new List<User>();
+            
             foreach (var user in allUsers)
             {
                 if (user.Id == Id)
                 {
-                    return user;
+                    singleUser.Add(user);
+                    return singleUser;
                 }
             } 
             
             throw new ArgumentException("User does not exist");
         }
 
-        public MethodType HandleRequest(Request request)
+        public Message HandleRequest(Request request)
         {
-            return MethodType.Get;
+            var message = new Message {MethodType = MethodType.Get};
+
+            if (request.Path.Equals("//") || request.Path.Equals("//users//"))
+            {
+                message.List = GetAllUsers();    
+            }
+            else if (request.Path.Length > 7)
+            {
+                var id = request.Path.Substring(7);
+                message.List = GetUserById(id);
+            }
+
+            return message;
         }
     }
 }
