@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,6 +15,7 @@ namespace FrameworklessApp
         public GetHandler(string filepath)
         {
             _filepath = filepath;
+            
         }
 
 
@@ -38,6 +40,11 @@ namespace FrameworklessApp
             } 
             
             throw new ArgumentException("User does not exist");
+        }
+
+        public MethodType HandleRequest(Request request)
+        {
+            return MethodType.Get;
         }
     }
 }

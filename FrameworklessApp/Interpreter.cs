@@ -32,8 +32,8 @@ namespace FrameworklessApp
                 default:
                     throw new ArgumentException("Method not valid");
             }
-            
-            return new Response();
+
+            return null;
 
         }
     }

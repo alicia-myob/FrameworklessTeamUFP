@@ -38,5 +38,10 @@ namespace FrameworklessApp
 
             return true;
         }
+        
+        public MethodType HandleRequest(Request request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
